@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="main1.css" rel="stylesheet"/>
+    </head>
+    <body>
+      <div id="preloader"></div>
+
+      <!--chatbox-->
+      <div class="name" style="height:50px;background:#fec2cf;margin-bottom:20px;color:#fff;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;text-align:center;line-height:1.9em;font-size:24px">
+            MESSAGE BOX
+      </div> 
+      <ul align="center" class="sansserif">
+        <li class="other">Chatbot sẽ giúp bạn gợi ý những địa điểm ăn uống thú vị ở thủ đô Seoul
+          <p><button class="button button1"  id="go" onclick="go()" >Let's go</button></p>
+        </li>
+        <li id="cuisine" class='other' style="display:none">Chọn loại bữa ăn mà bạn muốn
+          <p><button class="button button1"  id="choose" onclick="choose()" >Chọn</button></p>
+        </li>
+        <li id="list cat" class='other' style="display:none;"><p id="cf7" class="shadow">
+          <img class='opaque' src="maindish.jpg" />
+          <img src="nibble.jpg" align="middle"/>
+          <img src="dessert.jpg" />
+        <p id="cf7_controls">
+          <span><button class="button button1" id='food' onclick="food()">Bữa chính</button></span>
+          <span class="selected"><button class="button button1"  id="nib" onclick="nib()">Ăn vặt</button></span>
+          <span><button class="button button1" id='des' onclick="des()">Dessert</button></span>
+        </p></li>
+        <li id="cat"></li>
+        <li id="list main" class='other'><p id="cf8" class="shadow">
+          <img class='opaque' src="donam.jpg" />
+          <img src="jokbal.jpg" align="middle" />
+          <img src="dakgalbi.jpg" />
+        <p id="cf8_controls">
+          <span><button class="button button1" id='donam' onclick="donam()">Quán nhậu</button></span>
+          <span class="selected"><button class="button button1"  id="jokbal" onclick="jokbal()">Chân giò</button></span>
+          <span><button class="button button1" id='dak' onclick="dak()">Gà phô mai</button></span>
+        </p></li>
+        <li id="list nib" class='other'><p id="cf9" class="shadow">
+          <img class='opaque' src="eggdrop.jpg" />
+          <img src="ma.jpg" align="middle" />
+          <img src="mandu.jpg" />
+        <p id="cf9_controls">
+          <span><button class="button button1" id='egg' onclick="egg()">Bánh toast</button></span>
+          <span class="selected"><button class="button button1"  id="ma" onclick="ma()">Tteok tỏi chiên</button></span>
+          <span><button class="button button1" id='mandu' onclick="mandu()">Mandu</button></span>
+        </p></li>
+        <li id="list dessert" class='other'><p id="cf6" class="shadow">
+          <img class='opaque' src="bingsu.jpg" />
+          <img src="kem.jpg" align="middle" />
+          <img src="bbang.jpg" />
+        <p id="cf6_controls">
+          <span><button class="button button1" id='bingsu' onclick="bingsu()">Đá bào</button></span>
+          <span class="selected"><button class="button button1"  id="kem" onclick="kem()">Kem</button></span>
+          <span><button class="button button1" id='bbang' onclick="bbang()">Bánh mặn/bánh ngọt</button></span>
+        </p></li>
+        </ul>
+    </body>
+
+<!--preloader-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () 
+      {
+          setTimeout(function(){
+            $('#preloader').fadeOut('slow')
+        },5000); 
+  });  
+</script>
+<!--img display-->
+<script>
+  $(document).ready(function() {
+  $("#cf6_controls").on('click', 'span', function() {
+    $("#cf6 img").removeClass("opaque");
+
+    var newImage = $(this).index();
+
+    $("#cf6 img").eq(newImage).addClass("opaque");
+
+    $("#cf6_controls span").removeClass("selected");
+    $(this).addClass("selected");
+  });
+});
+</script>
+<script>
+  $(document).ready(function() {
+  $("#cf7_controls").on('click', 'span', function() {
+    $("#cf7 img").removeClass("opaque");
+
+    var newImage = $(this).index();
+
+    $("#cf7 img").eq(newImage).addClass("opaque");
+
+    $("#cf7_controls span").removeClass("selected");
+    $(this).addClass("selected");
+  });
+});
+</script>
+<script>
+  $(document).ready(function() {
+  $("#cf8_controls").on('click', 'span', function() {
+    $("#cf8 img").removeClass("opaque");
+
+    var newImage = $(this).index();
+
+    $("#cf8 img").eq(newImage).addClass("opaque");
+
+    $("#cf8_controls span").removeClass("selected");
+    $(this).addClass("selected");
+  });
+});
+</script>
+<script>
+  $(document).ready(function() {
+  $("#cf9_controls").on('click', 'span', function() {
+    $("#cf9 img").removeClass("opaque");
+
+    var newImage = $(this).index();
+
+    $("#cf9 img").eq(newImage).addClass("opaque");
+
+    $("#cf9_controls span").removeClass("selected");
+    $(this).addClass("selected");
+  });
+});
+</script>
+<!--category-->
+<script>
+  function food() {
+  document.getElementById("cat").innerHTML ="Bữa chính"
+  }
+  $('#food').click(function() {
+    $('#cat').addClass('me')
+});
+  function nib() {
+  document.getElementById("cat").innerHTML ="Ăn vặt"
+  }
+  $('#nib').click(function() {
+    $('#cat').addClass('me')
+});
+  function des() {
+  document.getElementById("cat").innerHTML ="Dessert"
+  }
+  $('#des').click(function() {
+    $('#cat').addClass('me')
+});
+</script>
+
+<!--display-->
+<script>
+  function go() {
+    var x = document.getElementById("cuisine");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    }
+  }
+  </script>
+
+<script>
+  function choose() {
+    var x = document.getElementById("list cat");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } 
+  }
+  </script>
+
+</html>
